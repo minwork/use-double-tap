@@ -3,7 +3,7 @@
 > React hook for handling double tap on mobile devices
 
 [![NPM](https://img.shields.io/npm/v/use-double-tap.svg)](https://www.npmjs.com/package/use-double-tap)
-[![NPM bundle size (minified)](https://img.shields.io/bundlephobia/min/use-double-tap.svg)](https://www.npmjs.com/package/use-double-tap)
+[![NPM](https://img.shields.io/npm/l/use-double-tap.svg)](https://www.npmjs.com/package/use-double-tap)
 ## Install
 
 ```bash
