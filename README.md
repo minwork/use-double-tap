@@ -1,4 +1,4 @@
-# useDoubleTap
+# :point_up_2: React Double Tap Hook :point_up_2:
 
 > React hook for handling double tap on mobile devices
 
@@ -17,9 +17,9 @@ yarn add use-double-tap
 ## Basic Usage
 
 ```javascript
-import React from 'react'
+import React from 'react';
 
-import { useDoubleTap } from 'use-double-tap'
+import { useDoubleTap } from 'use-double-tap';
 
 const Example = () => {
     const bind = useDoubleTap(() => {
@@ -48,10 +48,17 @@ useDoubleTap(null);
 ``` 
 This allows you to dynamically determine if event should be bound.
 
-## :warning: Warning :warning:
+## :warning: Warning
 This hook internally use `onClick` event to detect double tap, so be careful not to override your existing event listener.
 
 This is where disabling listener binding may come handy - you can use double tap detection only when necessary.
+
+## Why `onClick`?
+Because it leverages built in event handler which can also detect mobile tap event. 
+
+This way we can get rid of complicated edge cases when combining `onTouchCancel onTouchEnd onTouchMove onTouchStart` events.
+
+Also this approach greatly reduce package size as well as increase speed and flexibility.
 
 ## License
 
