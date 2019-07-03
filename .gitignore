@@ -56,6 +56,23 @@ typings/
 
 # dotenv environment variables file
 .env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
 
 # next.js build output
 .next
+
+# builds
+build
+dist
+.rpt2_cache
+
+# yarn
+yarn.lock
+
+# misc
+.idea/
+example/
+src/react-app-env.d.ts
