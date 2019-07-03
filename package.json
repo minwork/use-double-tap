@@ -4,6 +4,13 @@
   "description": "React hook for handling double tap on mobile devices",
   "author": "minwork",
   "license": "MIT",
+  "keywords": [
+    "react",
+    "hook",
+    "use",
+    "tap",
+    "double tap"
+  ],
   "repository": "minwork/use-double-tap",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
