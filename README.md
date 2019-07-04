@@ -31,6 +31,8 @@ const Example = () => {
 }
 ```
 
+**[Live demo](https://codesandbox.io/s/usedoubletap-d2exl)**
+
 ## Advanced usage
 ### Custom capture threshold
 You can also manually specify time threshold for capturing double tap event (default: 300ms).
