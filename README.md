@@ -48,7 +48,13 @@ If you pass falsy value as callback (like `null`) double tap will not bind to th
 ```javascript
 useDoubleTap(null);
 ``` 
-This allows you to dynamically determine if event should be bound.
+This allows you to dynamically control if event should be bound. For example:
+
+```javascript
+const bind = useDoubleTap(isMobile ? () => {
+  console.log('Double tapped');
+} : null);
+```
 
 ## :warning: Warning
 This hook internally use `onClick` event to detect double tap, so be careful not to override your existing event listener.
