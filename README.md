@@ -43,7 +43,7 @@ useDoubleTap(() => {
 ```
 In the example above, second tap must occur within 500ms period to register double tap.
 
-### Disable binding
+### Disable event binding
 If you pass falsy value as callback (like `null`) double tap will not bind to the component.
 ```javascript
 useDoubleTap(null);
@@ -62,9 +62,9 @@ This hook internally use `onClick` event to detect double tap, so be careful not
 This is where disabling listener binding may come handy - you can use double tap detection only when necessary.
 
 ## Why `onClick`?
-Because it leverages built in event handler which can also detect mobile tap event. 
+Because it leverages built in event listener which can also detect mobile tap event. 
 
-This way we can get rid of complicated edge cases when combining `onTouchCancel onTouchEnd onTouchMove onTouchStart` events.
+This way we can get rid of complicated edge cases when combining `onTouchStart onTouchEnd onTouchCancel onTouchMove` events.
 
 Also this approach greatly reduce package size as well as increase speed and flexibility.
 
