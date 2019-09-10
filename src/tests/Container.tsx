@@ -1,17 +1,17 @@
 import React, {useCallback, useState} from 'react';
-import {CallbackFunction, useDoubleTap} from "../index";
+import { DoubleTapCallback, useDoubleTap} from "../index";
 
 interface ContainerProps {
-  callback?: CallbackFunction | null,
+  callback?: DoubleTapCallback,
   threshold?: number
 }
 
 const Container: React.FC<ContainerProps> = ({ callback, threshold} = { callback: () => {}, threshold: undefined }) => {
   const [tapped, setTapped] = useState(0);
 
-  const handleDoubleTap = useCallback(() => {
+  const handleDoubleTap = useCallback((event) => {
     setTapped(current => current + 1);
-    callback && callback();
+    callback && callback(event);
   }, [callback]);
 
   const bind = useDoubleTap(callback === null ? callback : handleDoubleTap, threshold);

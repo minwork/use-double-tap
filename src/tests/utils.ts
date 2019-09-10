@@ -1,6 +1,8 @@
 import {CallbackFunction, useDoubleTap} from "../index";
 import {renderHook} from "@testing-library/react-hooks";
 
+export const noop = () => {};
+
 export function renderUseDoubleTap(
   callback: CallbackFunction | null,
   threshold: number = 300
@@ -20,8 +22,4 @@ export function renderUseDoubleTap(
       }
     }
   );
-}
-
-export async function promiseTimeout(timeout: number) {
-  return await new Promise((resolve) => setTimeout(resolve, timeout));
 }

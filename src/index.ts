@@ -1,28 +1,39 @@
-import { useCallback, useRef } from "react";
+import {MouseEvent, MouseEventHandler, useCallback, useRef} from "react";
 
-export type CallbackFunction = () => void;
+type EmptyCallback = () => void;
 
-interface UseDoubleTap {
-  onClick?: CallbackFunction;
+export type CallbackFunction<Target = Element> =
+  | MouseEventHandler<Target>
+  | EmptyCallback;
+
+export type DoubleTapCallback<Target = Element> = CallbackFunction<
+  Target
+> | null;
+
+interface UseDoubleTapResult<Target> {
+  onClick?: CallbackFunction<Target>;
 }
 
-export function useDoubleTap(
-  callback: CallbackFunction | null,
+export function useDoubleTap<Target = Element>(
+  callback: DoubleTapCallback<Target>,
   threshold: number = 300
-): UseDoubleTap {
+): UseDoubleTapResult<Target> {
   const timer = useRef<NodeJS.Timeout | null>(null);
 
-  const handler = useCallback(() => {
-    if (!timer.current) {
-      timer.current = setTimeout(() => {
+  const handler = useCallback<CallbackFunction<Target>>(
+    (event: MouseEvent<Target>) => {
+      if (!timer.current) {
+        timer.current = setTimeout(() => {
+          timer.current = null;
+        }, threshold);
+      } else {
+        clearTimeout(timer.current);
         timer.current = null;
-      }, threshold);
-    } else {
-      clearTimeout(timer.current);
-      timer.current = null;
-      callback && callback();
-    }
-  }, [callback, threshold]);
+        callback && callback(event);
+      }
+    },
+    [callback, threshold]
+  );
 
   return callback
     ? {
