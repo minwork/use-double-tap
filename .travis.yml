@@ -1,4 +1,15 @@
 language: node_js
+
 node_js:
   - "9"
   - "8"
+
+branches:
+  only:
+    - master
+
+script:
+  - yarn global add codecov
+
+after_success:
+  - travis_retry codecov
