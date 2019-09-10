@@ -2,8 +2,11 @@
 
 > React hook for handling double tap on mobile devices
 
-[![NPM](https://img.shields.io/npm/v/use-double-tap.svg)](https://www.npmjs.com/package/use-double-tap)
-[![NPM](https://img.shields.io/npm/l/use-double-tap.svg)](https://www.npmjs.com/package/use-double-tap)
+![Travis (.org)](https://img.shields.io/travis/minwork/use-double-tap)
+![Codecov](https://img.shields.io/codecov/c/gh/minwork/use-double-tap)
+![npm bundle size](https://img.shields.io/bundlephobia/min/use-double-tap)
+![npm](https://img.shields.io/npm/v/use-double-tap)
+![GitHub](https://img.shields.io/github/license/minwork/use-double-tap)
 ## Install
 
 ```bash
