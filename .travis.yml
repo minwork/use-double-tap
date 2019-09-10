@@ -1,7 +1,8 @@
 language: node_js
 
 node_js:
-  - "9"
+  - "12"
+  - "10"
   - "8"
 
 branches:
@@ -11,8 +12,13 @@ branches:
 env:
   - CODECOV_TOKEN="fe7c0e80-b628-4d23-873a-a3a743b7afe4"
 
+before_install:
+  - npm i -g npm
+
 script:
   - yarn global add codecov
+  - yarn build
+  - yarn test
 
 after_success:
   - travis_retry codecov
