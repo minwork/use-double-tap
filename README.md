@@ -25,7 +25,7 @@ import React from 'react';
 import { useDoubleTap } from 'use-double-tap';
 
 const Example = () => {
-    const bind = useDoubleTap(() => {
+    const bind = useDoubleTap((event) => {
       // Your action here
       console.log('Double tapped');
     });
