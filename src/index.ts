@@ -1,12 +1,15 @@
-import { useCallback, useRef } from 'react';
+import { useCallback, useRef } from "react";
 
-type CallbackFunction = () => void;
+export type CallbackFunction = () => void;
 
 interface UseDoubleTap {
-  onClick?: CallbackFunction
+  onClick?: CallbackFunction;
 }
 
-export function useDoubleTap(callback: CallbackFunction | null, threshold: number = 300): UseDoubleTap {
+export function useDoubleTap(
+  callback: CallbackFunction | null,
+  threshold: number = 300
+): UseDoubleTap {
   const timer = useRef<NodeJS.Timeout | null>(null);
 
   const handler = useCallback(() => {
@@ -21,7 +24,9 @@ export function useDoubleTap(callback: CallbackFunction | null, threshold: numbe
     }
   }, [callback, threshold]);
 
-  return callback ? {
-    onClick: handler,
-  } : {};
+  return callback
+    ? {
+        onClick: handler
+      }
+    : {};
 }
