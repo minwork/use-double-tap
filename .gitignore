@@ -74,9 +74,6 @@ build
 dist
 .rpt2_cache
 
-# yarn
-yarn.lock
-
 # misc
 .idea/
 example/

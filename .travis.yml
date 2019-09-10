@@ -8,6 +8,9 @@ branches:
   only:
     - master
 
+env:
+  - CODECOV_TOKEN="fe7c0e80-b628-4d23-873a-a3a743b7afe4"
+
 script:
   - yarn global add codecov
 
