@@ -1,12 +1,12 @@
 import React, {useCallback, useState} from 'react';
-import { DoubleTapCallback, useDoubleTap} from "../index";
+import { DoubleTapCallback, DoubleTapOptions, useDoubleTap} from "../index";
 
 interface ContainerProps {
   callback?: DoubleTapCallback,
-  threshold?: number
+  options?: DoubleTapOptions
 }
 
-const Container: React.FC<ContainerProps> = ({ callback, threshold} = { callback: () => {}, threshold: undefined }) => {
+const Container: React.FC<ContainerProps> = ({ callback, options } = { callback: () => {}, options: undefined }) => {
   const [tapped, setTapped] = useState(0);
 
   const handleDoubleTap = useCallback((event) => {
@@ -14,7 +14,7 @@ const Container: React.FC<ContainerProps> = ({ callback, threshold} = { callback
     callback && callback(event);
   }, [callback]);
 
-  const bind = useDoubleTap(callback === null ? callback : handleDoubleTap, threshold);
+  const bind = useDoubleTap(callback === null ? callback : handleDoubleTap, options);
 
   return (
     <div>

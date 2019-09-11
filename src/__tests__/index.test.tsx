@@ -13,7 +13,7 @@ describe("Basic usage", () => {
   });
 
   test("Accept two arguments", () => {
-    const { result } = renderUseDoubleTap(() => {}, 1000);
+    const { result } = renderUseDoubleTap(() => {}, { threshold: 1000 });
 
     expect(result.current).toEqual({
       onClick: expect.any(Function)

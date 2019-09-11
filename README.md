@@ -42,7 +42,9 @@ You can also manually specify time threshold for capturing double tap event (def
 ```javascript
 useDoubleTap(() => {
   // Your action here
-}, 500);
+}, {
+  threshold: 500
+});
 ```
 In the example above, second tap must occur within 500ms period to register double tap.
 
