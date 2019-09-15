@@ -24,6 +24,9 @@ describe("Basic usage", () => {
     const { result } = renderUseDoubleTap(null);
 
     expect(result.current).toEqual({});
+
+    const { result: result2 } = renderUseDoubleTap(null, 500);
+    expect(result2.current).toEqual({});
   });
 });
 

@@ -14,6 +14,8 @@ interface UseDoubleTapResult<Target> {
   onClick?: CallbackFunction<Target>;
 }
 
+export function useDoubleTap(callback: null): {};
+export function useDoubleTap(callback: null, threshold?: number): {};
 export function useDoubleTap<Target = Element>(
   callback: DoubleTapCallback<Target>,
   threshold: number = 300
