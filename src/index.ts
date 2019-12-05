@@ -1,45 +1,56 @@
-import {MouseEvent, MouseEventHandler, useCallback, useRef} from "react";
+import { MouseEvent, MouseEventHandler, useCallback, useRef } from 'react';
 
 type EmptyCallback = () => void;
 
-export type CallbackFunction<Target = Element> =
-  | MouseEventHandler<Target>
-  | EmptyCallback;
+export type CallbackFunction<Target = Element> = MouseEventHandler<Target> | EmptyCallback;
 
-export type DoubleTapCallback<Target = Element> = CallbackFunction<
-  Target
-> | null;
+export type DoubleTapCallback<Target = Element> = CallbackFunction<Target> | null;
 
-interface UseDoubleTapResult<Target> {
-  onClick?: CallbackFunction<Target>;
+export interface DoubleTapOptions<Target = Element> {
+    onSingleTap?: CallbackFunction<Target>;
 }
 
-export function useDoubleTap(callback: null): {};
-export function useDoubleTap(callback: null, threshold?: number): {};
-export function useDoubleTap<Target = Element>(
-  callback: DoubleTapCallback<Target>,
-  threshold: number = 300
-): UseDoubleTapResult<Target> {
-  const timer = useRef<NodeJS.Timeout | null>(null);
-
-  const handler = useCallback<CallbackFunction<Target>>(
-    (event: MouseEvent<Target>) => {
-      if (!timer.current) {
-        timer.current = setTimeout(() => {
-          timer.current = null;
-        }, threshold);
-      } else {
-        clearTimeout(timer.current);
-        timer.current = null;
-        callback && callback(event);
-      }
-    },
-    [callback, threshold]
-  );
-
-  return callback
+export type DoubleTapResult<Target, Callback> = Callback extends CallbackFunction<Target>
     ? {
-        onClick: handler
+          onClick: CallbackFunction<Target>;
       }
-    : {};
+    : Callback extends null
+    ? {}
+    : never;
+
+export function useDoubleTap<
+    Target = Element,
+    Callback extends DoubleTapCallback<Target> = DoubleTapCallback<Target>
+>(
+    callback: Callback,
+    threshold: number = 300,
+    options: DoubleTapOptions<Target> = {}
+): DoubleTapResult<Target, Callback> {
+    const timer = useRef<NodeJS.Timeout | null>(null);
+
+    console.log('Options', options);
+
+    const handler = useCallback<CallbackFunction<Target>>(
+        (event: MouseEvent<Target>) => {
+            if (!timer.current) {
+                timer.current = setTimeout(() => {
+                    if (options.onSingleTap) {
+                        options.onSingleTap(event);
+                    }
+                    timer.current = null;
+                }, threshold);
+            } else {
+                clearTimeout(timer.current);
+                timer.current = null;
+                callback && callback(event);
+            }
+        },
+        [callback, threshold, options.onSingleTap]
+    );
+
+    return (callback
+        ? {
+              onClick: handler,
+          }
+        : {}) as DoubleTapResult<Target, Callback>;
 }

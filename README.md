@@ -32,6 +32,8 @@ const Example = () => {
     
     return <button {...bind}>Tap me</button>;
 }
+
+export default Example;
 ```
 
 **[Live demo](https://codesandbox.io/s/usedoubletap-d2exl)**
@@ -45,6 +47,22 @@ useDoubleTap(() => {
 }, 500);
 ```
 In the example above, second tap must occur within 500ms period to register double tap.
+
+### Additional options
+Supplied as third argument.
+```typescript
+useDoubleTap(() => {
+  // Actions on double tap
+}, 300, {
+  // Options here
+})
+```
+
+List of possible options:
+
+| Option        | Type            | Description  |
+| ------------- |:---------------:| -----|
+| onSingleTap   | Function | Callback for handling case when double tap is not triggered,<br> because of capture timeout.<br><br>For example if `threshold` parameter is *300ms* and second tap occurs after *400ms*<br> then `onSingleTap` is triggered **after** capture interval (*300ms*) expires. |
 
 ### Disable event binding
 If you pass falsy value as callback (like `null`) double tap will not bind to the component.
