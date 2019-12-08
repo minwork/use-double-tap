@@ -28,8 +28,6 @@ export function useDoubleTap<
 ): DoubleTapResult<Target, Callback> {
     const timer = useRef<NodeJS.Timeout | null>(null);
 
-    console.log('Options', options);
-
     const handler = useCallback<CallbackFunction<Target>>(
         (event: MouseEvent<Target>) => {
             if (!timer.current) {
