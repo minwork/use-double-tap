@@ -4,6 +4,7 @@
 
 ![Travis (.org)](https://img.shields.io/travis/minwork/use-double-tap)
 ![Codecov](https://img.shields.io/codecov/c/gh/minwork/use-double-tap)
+![npm type definitions](https://img.shields.io/npm/types/use-double-tap)
 ![npm bundle size](https://img.shields.io/bundlephobia/min/use-double-tap)
 ![npm](https://img.shields.io/npm/v/use-double-tap)
 ![GitHub](https://img.shields.io/github/license/minwork/use-double-tap)
@@ -29,7 +30,7 @@ const Example = () => {
       // Your action here
       console.log('Double tapped');
     });
-    
+
     return <button {...bind}>Tap me</button>;
 }
 
@@ -68,7 +69,7 @@ List of possible options:
 If you pass falsy value as callback (like `null`) double tap will not bind to the component.
 ```javascript
 useDoubleTap(null);
-``` 
+```
 This allows you to dynamically control if event should be bound. For example:
 
 ```javascript
@@ -83,7 +84,7 @@ This hook internally use `onClick` event to detect double tap, so be careful not
 This is where disabling listener binding may come handy - you can use double tap detection only when necessary.
 
 ## Why `onClick`?
-Because it leverages built in event listener which can also detect mobile tap event. 
+Because it leverages built in event listener which can also detect mobile tap event.
 
 This way we can get rid of complicated edge cases when combining `onTouchStart onTouchEnd onTouchCancel onTouchMove` events.
 
