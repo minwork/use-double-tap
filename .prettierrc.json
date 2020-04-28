@@ -1,14 +1,6 @@
 {
-  "printWidth": 115,
-  "tabWidth": 4,
-  "singleQuote": true,
-  "trailingComma": "es5",
-  "overrides": [
-    {
-      "files": "*.yml",
-      "options": {
-        "tabWidth": 2
-      }
-    }
-  ]
+    "printWidth": 115,
+    "tabWidth": 4,
+    "singleQuote": true,
+    "trailingComma": "es5"
 }

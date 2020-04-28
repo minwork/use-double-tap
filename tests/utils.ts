@@ -1,7 +1,14 @@
-import { CallbackFunction, DoubleTapOptions, useDoubleTap } from '../index';
+import React from "react";
+import { CallbackFunction, DoubleTapOptions, useDoubleTap } from '../src';
 import { renderHook } from '@testing-library/react-hooks';
 
-export const noop = () => {};
+export function mockEvent<EventType extends React.SyntheticEvent = React.SyntheticEvent>(
+  props?: Partial<EventType>
+): EventType {
+  return {
+    ...props,
+  } as EventType;
+}
 
 export function renderUseDoubleTap<Target = Element>(
   callback: CallbackFunction<Target> | null,
